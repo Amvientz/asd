@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import random
 
 
 def get_syll(driver, name):
@@ -8,7 +9,7 @@ def get_syll(driver, name):
 
 
 if __name__ == "__main__":
-    url = 'https://jklm.fun/SRMX'
+    url = 'https://jklm.fun/DXRD'
     dic_url = 'https://www.thefreedictionary.com/words-containing-'
 
     seen = {}
@@ -36,16 +37,16 @@ if __name__ == "__main__":
 
         if len(other_turn) == 0 and len(syll) > 0:
             print(syll)
-            print(other_turn)
-            if prev != syll:
+            #print(other_turn)
+            if prev != syll or prev == syll:
 
-                #   find the word
+                # find the word
                 dic_url = 'https://www.thefreedictionary.com/words-containing-' + syll
                 dicdriver.get(dic_url)
 
-                pointer = 15
+                pointer = 5
 
-                for i in reversed(range(15)):
+                for i in (range(6, 15)):
                     dic_web = dicdriver.find_elements_by_xpath('//*[@id="w' + str(i) + '"]/ul/li[1]')
 
                     if dic_web is not None:
@@ -62,11 +63,14 @@ if __name__ == "__main__":
                 else:
                     seen[dic_word] = 1
 
-                print(seen)
+                # print(seen)
                 print(dic_word)
 
-                #   input the word
+                # input the word
                 input_box = driver.find_elements_by_xpath('/html/body/div[2]/div[3]/div[2]/div[2]/form/input')
-                input_box[0].send_keys(dic_word)
+
+                for letter in dic_word:
+                    time.sleep(random.uniform(.08, .2))
+                    input_box[0].send_keys(letter)
                 input_box[0].send_keys(Keys.ENTER)
             prev = syll
