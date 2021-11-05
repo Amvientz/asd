@@ -26,8 +26,9 @@
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-
+ ```sh
+   url = '' <-- input game URL
+```
    ```sh
    python main.py
    ```
