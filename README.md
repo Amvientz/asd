@@ -24,7 +24,7 @@
    
 
 
-<!-- USAGE EXAMPLES -->
+<!-- USAGE-->
 ## Usage
  ```sh
    url = '' <-- input game URL
@@ -32,7 +32,4 @@
    ```sh
    python main.py
    ```
-
-demo 1 star
-![](sample1.gif)
 
